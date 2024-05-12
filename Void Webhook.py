@@ -70,7 +70,7 @@ logocfade = fade.pinkred(logoc)
 
 def randomshit():
     webhook_name = webhook["name"]
-    titletext = f"Void Webhook | Logged into: {webhook_name} | Made by: Spermklat"
+    titletext = f"Void Webhook | Logged into: {webhook_name} | Made by: Void"
     clear()
     print(logocfade)
     ctypes.windll.kernel32.SetConsoleTitleW(titletext)
@@ -152,7 +152,7 @@ while True:
             
             os.system("title ")
             print(logofade)
-            url = input(f"{Colors.pink}╔═[User@Webhook] \n╚══> {Colors.white}")
+            url = input(f"{Colors.pink}╔═[Void@Webhook] \n╚══> {Colors.white}")
             response = requests.get(url)
             if response.status_code == 200:
                 webhook = response.json()
