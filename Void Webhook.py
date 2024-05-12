@@ -1,7 +1,5 @@
-import time, os, fade, requests, colorama, ctypes, platform, socket, requests
-from pystyle import Colors, Colorate, Center
-from datetime import datetime
-from colorama import Fore, Back
+import time, os, fade, ctypes, requests
+from pystyle import Colors
 
 
 
@@ -83,31 +81,31 @@ def sendmessage(url):
     try:
         response = requests.post(url, json={"content": msg})
         response.raise_for_status()
-        print(f"{Fore.GREEN}[ + ] {Fore.WHITE}Message sent.")
+        print(f"{Colors.green}[ + ] {Colors.white}Message sent.")
     except requests.exceptions.HTTPError as errh:
-        print(f"{Fore.RED}[ - ]{Fore.WHITE} HTTP Error: {errh}")
+        print(f"{Colors.red}[ - ]{Colors.white} HTTP Error: {errh}")
     except requests.exceptions.ConnectionError as errc:
-        print(f"{Fore.RED}[ - ]{Fore.WHITE} Error Connecting: {errc}")
+        print(f"{Colors.red}[ - ]{Colors.white} Error Connecting: {errc}")
     except requests.exceptions.Timeout as errt:
-        print(f"{Fore.RED}[ - ]{Fore.WHITE} Timeout Error: {errt}")
+        print(f"{Colors.red}[ - ]{Colors.white} Timeout Error: {errt}")
     except requests.exceptions.RequestException as err:
-        print(f"{Fore.RED}[ - ]{Fore.WHITE} Request Exception: {err}")
+        print(f"{Colors.red}[ - ]{Colors.white} Request Exception: {err}")
 
 def deletehook(url):
     print(logofade)
     try:
         response = requests.delete(url)
         response.raise_for_status()  # Raises HTTPError for bad responses
-        print(f"{Fore.GREEN}[ + ]{Fore.WHITE} Webhook deleted")
+        print(f"{Colors.green}[ + ]{Colors.white} Webhook deleted")
         time.sleep(2)
     except requests.exceptions.HTTPError as errh:
-        print(f"{Fore.RED}[ - ]{Fore.WHITE} HTTP Error: {errh}")
+        print(f"{Colors.red}[ - ]{Colors.white} HTTP Error: {errh}")
     except requests.exceptions.ConnectionError as errc:
-        print(f"{Fore.RED}[ - ]{Fore.WHITE} Error Connecting: {errc}")
+        print(f"{Colors.red}[ - ]{Colors.white} Error Connecting: {errc}")
     except requests.exceptions.Timeout as errt:
-        print(f"{Fore.RED}[ - ]{Fore.WHITE} Timeout Error: {errt}")
+        print(f"{Colors.red}[ - ]{Colors.white} Timeout Error: {errt}")
     except requests.exceptions.RequestException as err:
-        print(f"{Fore.RED}[ - ]{Fore.WHITE} Request Exception: {err}")
+        print(f"{Colors.red}[ - ]{Colors.white} Request Exception: {err}")
 
 def renamehook(url):
     print(logofade)
@@ -115,15 +113,15 @@ def renamehook(url):
     try:
         response = requests.patch(url, json={"name": name})
         response.raise_for_status()
-        print(f"{Fore.GREEN}[ + ]{Fore.WHITE} Webhook name changed.")
+        print(f"{Colors.green}[ + ]{Colors.white} Webhook name changed.")
     except requests.exceptions.HTTPError as errh:
-        print(f"{Fore.RED}[ - ]{Fore.WHITE} HTTP Error: {errh}")
+        print(f"{Colors.red}[ - ]{Colors.white} HTTP Error: {errh}")
     except requests.exceptions.ConnectionError as errc:
-        print(f"{Fore.RED}[ - ]{Fore.WHITE} Error Connecting: {errc}")
+        print(f"{Colors.red}[ - ]{Colors.white} Error Connecting: {errc}")
     except requests.exceptions.Timeout as errt:
-        print(f"{Fore.RED}[ - ]{Fore.WHITE} Timeout Error: {errt}")
+        print(f"{Colors.red}[ - ]{Colors.white} Timeout Error: {errt}")
     except requests.exceptions.RequestException as err:
-        print(f"{Fore.RED}[ - ]{Fore.WHITE} Request Exception: {err}")
+        print(f"{Colors.red}[ - ]{Colors.white} Request Exception: {err}")
 
 def spamhook(url):
     print(logofade)
@@ -133,16 +131,16 @@ def spamhook(url):
         while True:
             response = requests.post(url, json={"content": msg})
             response.raise_for_status()
-            print(f"{Fore.GREEN}[ + ]{Fore.WHITE} {msg} sent.")
+            print(f"{Colors.green}[ + ]{Colors.white} {msg} sent.")
             time.sleep(timeout)
     except requests.exceptions.HTTPError as errh:
-        print(f"{Fore.RED}[ - ]{Fore.WHITE} HTTP Error: {errh}")
+        print(f"{Colors.red}[ - ]{Colors.white} HTTP Error: {errh}")
     except requests.exceptions.ConnectionError as errc:
-        print(f"{Fore.RED}[ - ]{Fore.WHITE} Error Connecting: {errc}")
+        print(f"{Colors.red}[ - ]{Colors.white} Error Connecting: {errc}")
     except requests.exceptions.Timeout as errt:
-        print(f"{Fore.RED}[ - ]{Fore.WHITE} Timeout Error: {errt}")
+        print(f"{Colors.red}[ - ]{Colors.white} Timeout Error: {errt}")
     except requests.exceptions.RequestException as err:
-        print(f"{Fore.RED}[ - ]{Fore.WHITE} Request Exception: {err}")
+        print(f"{Colors.red}[ - ]{Colors.white} Request Exception: {err}")
 
 
 while True:
@@ -158,14 +156,14 @@ while True:
                 webhook = response.json()
                 break
             else:
-                print(f"\n{Fore.RED}[ - ]{Back.RESET}{Fore.RESET} Invalid Webhook: {response.status_code}")
+                print(f"\n{Colors.red}[ - ]{Colors.reset} Invalid Webhook: {response.status_code}")
                 time.sleep(3)    
                 clear()
                 break
         except Exception as e:
             if isinstance(e, KeyboardInterrupt):
                 raise SystemExit
-            print(f"\n{Fore.RED}[ - ]{Back.RESET}{Fore.RESET} Invalid Webhook")
+            print(f"\n{Colors.red}[ - ]{Colors.reset} Invalid Webhook")
             time.sleep(3)
             clear()
             break
